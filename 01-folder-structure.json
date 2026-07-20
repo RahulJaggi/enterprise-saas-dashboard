@@ -1,0 +1,273 @@
+{
+  "meta": {
+    "step": 2,
+    "file": "01-folder-structure.json",
+    "title": "Enterprise Folder Structure",
+    "description": "Create only scalable enterprise folder structure. Do not implement any business logic, pages, API calls or UI."
+  },
+
+  "instructions": {
+    "strict": true,
+    "overwriteExisting": false,
+    "createOnlyFolders": true,
+    "createPlaceholderFiles": true,
+    "implementLogic": false,
+    "installPackages": false,
+    "modifyConfig": false
+  },
+
+  "project": {
+    "root": "enterprise-saas-dashboard",
+    "source": "src"
+  },
+
+  "folders": [
+    {
+      "name": "src",
+      "children": [
+
+        {
+          "name": "app",
+          "children": [
+            "App.tsx",
+            "main.tsx",
+            "providers.tsx"
+          ]
+        },
+
+        {
+          "name": "assets",
+          "children": [
+            "images",
+            "icons",
+            "fonts"
+          ]
+        },
+
+        {
+          "name": "components",
+          "children": [
+            "common",
+            "forms",
+            "tables",
+            "charts",
+            "feedback",
+            "navigation",
+            "layout"
+          ]
+        },
+
+        {
+          "name": "config",
+          "children": [
+            "api.ts",
+            "env.ts",
+            "theme.ts"
+          ]
+        },
+
+        {
+          "name": "constants",
+          "children": [
+            "routes.ts",
+            "roles.ts",
+            "permissions.ts",
+            "messages.ts"
+          ]
+        },
+
+        {
+          "name": "features",
+          "children": [
+
+            {
+              "name": "auth",
+              "children": [
+                "components",
+                "hooks",
+                "pages",
+                "services",
+                "types"
+              ]
+            },
+
+            {
+              "name": "dashboard",
+              "children": [
+                "components",
+                "pages",
+                "services",
+                "types"
+              ]
+            },
+
+            {
+              "name": "users",
+              "children": [
+                "components",
+                "pages",
+                "services",
+                "types"
+              ]
+            },
+
+            {
+              "name": "roles",
+              "children": [
+                "components",
+                "pages",
+                "services",
+                "types"
+              ]
+            },
+
+            {
+              "name": "products",
+              "children": [
+                "components",
+                "pages",
+                "services",
+                "types"
+              ]
+            },
+
+            {
+              "name": "orders",
+              "children": [
+                "components",
+                "pages",
+                "services",
+                "types"
+              ]
+            },
+
+            {
+              "name": "customers",
+              "children": [
+                "components",
+                "pages",
+                "services",
+                "types"
+              ]
+            },
+
+            {
+              "name": "settings",
+              "children": [
+                "components",
+                "pages",
+                "services",
+                "types"
+              ]
+            }
+
+          ]
+        },
+
+        {
+          "name": "hooks",
+          "children": [
+            "useDebounce.ts",
+            "usePagination.ts",
+            "useLocalStorage.ts"
+          ]
+        },
+
+        {
+          "name": "layouts",
+          "children": [
+            "AuthLayout",
+            "DashboardLayout"
+          ]
+        },
+
+        {
+          "name": "lib",
+          "children": [
+            "axios.ts",
+            "storage.ts"
+          ]
+        },
+
+        {
+          "name": "providers",
+          "children": [
+            "ReduxProvider.tsx",
+            "ThemeProvider.tsx"
+          ]
+        },
+
+        {
+          "name": "router",
+          "children": [
+            "index.tsx",
+            "protectedRoutes.tsx"
+          ]
+        },
+
+        {
+          "name": "services",
+          "children": [
+            "api",
+            "http"
+          ]
+        },
+
+        {
+          "name": "store",
+          "children": [
+            "index.ts",
+            "rootReducer.ts"
+          ]
+        },
+
+        {
+          "name": "styles",
+          "children": [
+            "globals.css",
+            "variables.css"
+          ]
+        },
+
+        {
+          "name": "types",
+          "children": [
+            "api.ts",
+            "common.ts"
+          ]
+        },
+
+        {
+          "name": "utils",
+          "children": [
+            "date.ts",
+            "format.ts",
+            "helpers.ts"
+          ]
+        }
+      ]
+    }
+  ],
+
+  "rules": [
+    "Create folders only.",
+    "Create empty placeholder files.",
+    "Do not write implementation.",
+    "Do not install dependencies.",
+    "Do not configure Redux.",
+    "Do not configure Router.",
+    "Do not configure Tailwind.",
+    "Do not generate components.",
+    "Do not create pages.",
+    "Do not generate API layer.",
+    "Do not create authentication.",
+    "No UI implementation."
+  ],
+
+  "expectedResult": [
+    "Enterprise folder hierarchy created.",
+    "Placeholder files created.",
+    "Project ready for bootstrap step.",
+    "No runtime code added."
+  ]
+}

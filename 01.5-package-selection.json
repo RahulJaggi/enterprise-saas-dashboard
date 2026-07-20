@@ -1,0 +1,176 @@
+{
+  "meta": {
+    "step": "01.5",
+    "title": "Package Selection",
+    "description": "Install and configure all required production dependencies for an Enterprise SaaS Dashboard. Do not implement any business logic or UI."
+  },
+
+  "instructions": {
+    "strict": true,
+    "installDependencies": true,
+    "createFiles": false,
+    "modifyApplication": false,
+    "generateComponents": false,
+    "generatePages": false,
+    "generateBusinessLogic": false
+  },
+
+  "runtime": {
+    "node": ">=22",
+    "packageManager": "npm"
+  },
+
+  "dependencies": {
+
+    "core": [
+      "react",
+      "react-dom",
+      "typescript",
+      "vite"
+    ],
+
+    "routing": [
+      "react-router-dom"
+    ],
+
+    "stateManagement": [
+      "@reduxjs/toolkit",
+      "react-redux",
+      "redux-persist"
+    ],
+
+    "api": [
+      "@reduxjs/toolkit/query",
+      "axios"
+    ],
+
+    "forms": [
+      "react-hook-form",
+      "@hookform/resolvers",
+      "zod"
+    ],
+
+    "ui": [
+      "tailwindcss",
+      "@tailwindcss/vite",
+      "class-variance-authority",
+      "clsx",
+      "tailwind-merge",
+      "lucide-react"
+    ],
+
+    "table": [
+      "@tanstack/react-table"
+    ],
+
+    "charts": [
+      "recharts"
+    ],
+
+    "date": [
+      "date-fns"
+    ],
+
+    "notifications": [
+      "sonner"
+    ],
+
+    "theme": [
+      "next-themes"
+    ]
+  },
+
+  "devDependencies": {
+
+    "linting": [
+      "eslint",
+      "@eslint/js",
+      "typescript-eslint",
+      "eslint-plugin-react-hooks",
+      "eslint-plugin-react-refresh"
+    ],
+
+    "formatting": [
+      "prettier",
+      "eslint-config-prettier",
+      "eslint-plugin-prettier"
+    ],
+
+    "git": [
+      "husky",
+      "lint-staged"
+    ],
+
+    "testing": [
+      "vitest",
+      "@testing-library/react",
+      "@testing-library/jest-dom",
+      "@testing-library/user-event",
+      "playwright"
+    ],
+
+    "types": [
+      "@types/node",
+      "@types/react",
+      "@types/react-dom"
+    ]
+  },
+
+  "npmScripts": {
+
+    "dev": "vite",
+
+    "build": "tsc -b && vite build",
+
+    "preview": "vite preview",
+
+    "lint": "eslint .",
+
+    "format": "prettier --write .",
+
+    "test": "vitest",
+
+    "coverage": "vitest --coverage"
+  },
+
+  "validation": {
+
+    "projectMustCompile": true,
+
+    "noWarnings": true,
+
+    "strictTypeScript": true
+  },
+
+  "rules": [
+
+    "Do not create UI.",
+
+    "Do not create Dashboard.",
+
+    "Do not create Pages.",
+
+    "Do not create Components.",
+
+    "Do not write API.",
+
+    "Do not configure Authentication.",
+
+    "Only install and register packages.",
+
+    "Project must compile successfully."
+  ],
+
+  "expectedOutput": [
+
+    "All packages installed.",
+
+    "Package.json updated.",
+
+    "Scripts verified.",
+
+    "No runtime errors.",
+
+    "Application starts successfully using npm run dev."
+  ]
+}
