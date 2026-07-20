@@ -6,7 +6,10 @@ import { useAppDispatch, useAppSelector } from '../../hooks/useAppDispatch';
 import { logout } from '../../app/authSlice';
 import { markAsRead, markAllAsRead } from '../../app/notificationSlice';
 
+import { useNavigate } from 'react-router-dom';
+
 export const Header: React.FC = () => {
+  const navigate = useNavigate();
   const { isDark, toggleTheme } = useDarkMode();
   const { user } = useAuth();
   const dispatch = useAppDispatch();
@@ -118,7 +121,10 @@ export const Header: React.FC = () => {
                 <p className="text-[11px] text-slate-400 truncate">{user?.email}</p>
               </div>
               <button
-                onClick={() => dispatch(logout())}
+                onClick={() => {
+                  dispatch(logout());
+                  navigate('/login');
+                }}
                 className="w-full flex items-center gap-2 px-3 py-2 mt-1 text-xs font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 rounded-lg transition-colors"
               >
                 <LogOut className="w-3.5 h-3.5" /> Sign Out
