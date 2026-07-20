@@ -18,7 +18,7 @@ import { CustomersPage } from '../features/customers/pages/CustomersPage';
 import { NotificationsView } from '../features/notifications/NotificationsView';
 import { ProfileView } from '../features/profile/ProfileView';
 import { SettingsPage } from '../features/settings/pages/SettingsPage';
-import { ReportsView } from '../features/reports/ReportsView';
+import { ReportsPage } from '../features/reports/pages/ReportsPage';
 import { AuditLogsView } from '../features/audit-logs/AuditLogsView';
 
 export const router = createBrowserRouter([
@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
           { path: '/notifications', element: <NotificationsView /> },
           { path: '/profile', element: <ProfileView /> },
           { path: '/settings', element: <SettingsPage /> },
-          { path: '/reports', element: <ReportsView /> },
+          { path: '/reports', element: <ReportsPage /> },
           { path: '/audit-logs', element: <AuditLogsView /> },
         ],
       },
