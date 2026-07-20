@@ -12,7 +12,7 @@ import { AnalyticsView } from '../features/analytics/AnalyticsView';
 import { UsersPage } from '../features/users/pages/UsersPage';
 
 import { RolesView } from '../features/roles/RolesView';
-import { ProductsView } from '../features/products/ProductsView';
+import { ProductsPage } from '../features/products/pages/ProductsPage';
 import { OrdersView } from '../features/orders/OrdersView';
 import { CustomersView } from '../features/customers/CustomersView';
 import { NotificationsView } from '../features/notifications/NotificationsView';
@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
           { path: '/analytics', element: <AnalyticsView /> },
           { path: '/users', element: <UsersPage /> },
           { path: '/roles', element: <RolesView /> },
-          { path: '/products', element: <ProductsView /> },
+          { path: '/products', element: <ProductsPage /> },
           { path: '/orders', element: <OrdersView /> },
           { path: '/customers', element: <CustomersView /> },
           { path: '/notifications', element: <NotificationsView /> },
