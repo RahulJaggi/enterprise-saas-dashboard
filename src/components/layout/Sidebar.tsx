@@ -18,32 +18,42 @@ import {
 } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../hooks/useAppDispatch';
 import { toggleSidebar } from '../../app/themeSlice';
+import { usePermission } from '../../hooks/usePermission';
+import { Permission } from '../../config/permissions';
 
 interface NavItem {
   label: string;
   path: string;
   icon: React.ReactNode;
-  badge?: string;
+  permission?: Permission;
+  adminOnly?: boolean;
 }
 
 const navItems: NavItem[] = [
   { label: 'Dashboard', path: '/dashboard', icon: <LayoutDashboard className="w-4 h-4" /> },
   { label: 'Analytics', path: '/analytics', icon: <BarChart3 className="w-4 h-4" /> },
-  { label: 'Users', path: '/users', icon: <Users className="w-4 h-4" /> },
-  { label: 'Roles & Perms', path: '/roles', icon: <ShieldCheck className="w-4 h-4" /> },
-  { label: 'Products', path: '/products', icon: <Package className="w-4 h-4" /> },
-  { label: 'Orders', path: '/orders', icon: <ShoppingCart className="w-4 h-4" /> },
-  { label: 'Customers', path: '/customers', icon: <UserCheck className="w-4 h-4" /> },
+  { label: 'Users', path: '/users', icon: <Users className="w-4 h-4" />, permission: 'users:read' },
+  { label: 'Roles & Perms', path: '/roles', icon: <ShieldCheck className="w-4 h-4" />, adminOnly: true },
+  { label: 'Products', path: '/products', icon: <Package className="w-4 h-4" />, permission: 'products:read' },
+  { label: 'Orders', path: '/orders', icon: <ShoppingCart className="w-4 h-4" />, permission: 'orders:read' },
+  { label: 'Customers', path: '/customers', icon: <UserCheck className="w-4 h-4" />, permission: 'customers:read' },
   { label: 'Notifications', path: '/notifications', icon: <Bell className="w-4 h-4" /> },
   { label: 'Profile', path: '/profile', icon: <User className="w-4 h-4" /> },
-  { label: 'Settings', path: '/settings', icon: <Settings className="w-4 h-4" /> },
-  { label: 'Reports', path: '/reports', icon: <FileSpreadsheet className="w-4 h-4" /> },
-  { label: 'Audit Logs', path: '/audit-logs', icon: <History className="w-4 h-4" /> },
+  { label: 'Settings', path: '/settings', icon: <Settings className="w-4 h-4" />, permission: 'settings:read' },
+  { label: 'Reports', path: '/reports', icon: <FileSpreadsheet className="w-4 h-4" />, permission: 'reports:read' },
+  { label: 'Audit Logs', path: '/audit-logs', icon: <History className="w-4 h-4" />, adminOnly: true },
 ];
 
 export const Sidebar: React.FC = () => {
   const dispatch = useAppDispatch();
   const sidebarOpen = useAppSelector((state) => state.theme.sidebarOpen);
+  const { role, hasPermission } = usePermission();
+
+  const filteredNavItems = navItems.filter((item) => {
+    if (item.adminOnly && role !== 'Admin') return false;
+    if (item.permission && !hasPermission(item.permission)) return false;
+    return true;
+  });
 
   return (
     <aside
@@ -63,7 +73,7 @@ export const Sidebar: React.FC = () => {
                 Enterprise SaaS
               </span>
               <span className="text-[10px] text-indigo-400 font-mono font-medium tracking-wider">
-                PRO V1.0.0
+                ROLE: {role.toUpperCase()}
               </span>
             </div>
           )}
@@ -78,7 +88,7 @@ export const Sidebar: React.FC = () => {
 
       {/* Nav Menu */}
       <div className="flex-1 overflow-y-auto px-3 py-4 space-y-1">
-        {navItems.map((item) => (
+        {filteredNavItems.map((item) => (
           <NavLink
             key={item.path}
             to={item.path}
@@ -101,7 +111,7 @@ export const Sidebar: React.FC = () => {
         <div className="p-4 border-t border-slate-800/80 bg-slate-950/40">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-            <span className="text-[11px] font-medium text-slate-400">System Healthy</span>
+            <span className="text-[11px] font-medium text-slate-400">Role Active: {role}</span>
           </div>
         </div>
       )}

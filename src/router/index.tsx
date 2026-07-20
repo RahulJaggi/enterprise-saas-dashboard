@@ -2,10 +2,12 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { MainLayout } from '../components/layout/MainLayout';
 import { AuthLayout } from '../components/layout/AuthLayout';
 import { ProtectedRouteWrapper } from './protectedRoutes';
+import { RoleGuard } from '../components/auth/RoleGuard';
 
 import { Login } from '../features/auth/Login';
 import { Register } from '../features/auth/Register';
 import { ForgotPassword } from '../features/auth/ForgotPassword';
+import { Forbidden } from '../features/auth/Forbidden';
 
 import { DashboardView } from '../features/dashboard/DashboardView';
 import { AnalyticsView } from '../features/analytics/AnalyticsView';
@@ -27,6 +29,10 @@ export const router = createBrowserRouter([
     element: <Navigate to="/dashboard" replace />,
   },
   {
+    path: '/forbidden',
+    element: <Forbidden />,
+  },
+  {
     element: <AuthLayout />,
     children: [
       { path: '/login', element: <Login /> },
@@ -42,16 +48,28 @@ export const router = createBrowserRouter([
         children: [
           { path: '/dashboard', element: <DashboardView /> },
           { path: '/analytics', element: <AnalyticsView /> },
-          { path: '/users', element: <UsersPage /> },
-          { path: '/roles', element: <RolesView /> },
           { path: '/products', element: <ProductsPage /> },
           { path: '/orders', element: <OrdersPage /> },
           { path: '/customers', element: <CustomersPage /> },
           { path: '/notifications', element: <NotificationsView /> },
           { path: '/profile', element: <ProfileView /> },
-          { path: '/settings', element: <SettingsPage /> },
           { path: '/reports', element: <ReportsPage /> },
-          { path: '/audit-logs', element: <AuditLogsView /> },
+
+          // Restricted Admin & Manager routes
+          {
+            element: <RoleGuard allowedRoles={['Admin', 'Manager']} />,
+            children: [{ path: '/users', element: <UsersPage /> }],
+          },
+
+          // Restricted Admin-only routes
+          {
+            element: <RoleGuard allowedRoles={['Admin']} />,
+            children: [
+              { path: '/roles', element: <RolesView /> },
+              { path: '/settings', element: <SettingsPage /> },
+              { path: '/audit-logs', element: <AuditLogsView /> },
+            ],
+          },
         ],
       },
     ],

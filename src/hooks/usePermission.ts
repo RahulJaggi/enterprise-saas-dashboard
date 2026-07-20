@@ -1,20 +1,23 @@
-import { useAuth } from './useAuth';
-import { UserPermissions } from '../types';
+import { useAppSelector } from './useAppDispatch';
+import { Permission, UserRole, ROLE_PERMISSIONS_MATRIX } from '../config/permissions';
 
-export const usePermission = () => {
-  const { user } = useAuth();
+export function usePermission() {
+  const user = useAppSelector((state) => state.auth.user);
+  const role: UserRole = (user?.role as UserRole) || 'Admin';
 
-  const hasPermission = <
-    K extends keyof UserPermissions,
-    P extends keyof UserPermissions[K]
-  >(
-    module: K,
-    action: P
-  ): boolean => {
-    if (!user) return false;
-    if (user.role === 'Super Admin') return true;
-    return !!user.permissions[module]?.[action];
+  const hasPermission = (permission: Permission): boolean => {
+    const allowed = ROLE_PERMISSIONS_MATRIX[role] || [];
+    return allowed.includes(permission);
   };
 
-  return { hasPermission };
-};
+  const hasRole = (allowedRoles: UserRole[]): boolean => {
+    return allowedRoles.includes(role);
+  };
+
+  return {
+    user,
+    role,
+    hasPermission,
+    hasRole,
+  };
+}
