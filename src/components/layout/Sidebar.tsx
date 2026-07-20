@@ -50,7 +50,7 @@ export const Sidebar: React.FC = () => {
   const { role, hasPermission } = usePermission();
 
   const filteredNavItems = navItems.filter((item) => {
-    if (item.adminOnly && role !== 'Admin') return false;
+    if (item.adminOnly && role !== 'Admin' && role !== 'Super Admin') return false;
     if (item.permission && !hasPermission(item.permission)) return false;
     return true;
   });

@@ -8,6 +8,7 @@ import { Login } from '../features/auth/Login';
 import { Register } from '../features/auth/Register';
 import { ForgotPassword } from '../features/auth/ForgotPassword';
 import { Forbidden } from '../features/auth/Forbidden';
+import { Unauthorized } from '../features/auth/Unauthorized';
 
 import { DashboardView } from '../features/dashboard/DashboardView';
 import { AnalyticsView } from '../features/analytics/AnalyticsView';
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <Navigate to="/dashboard" replace />,
+  },
+  {
+    path: '/unauthorized',
+    element: <Unauthorized />,
   },
   {
     path: '/forbidden',
@@ -55,15 +60,15 @@ export const router = createBrowserRouter([
           { path: '/profile', element: <ProfileView /> },
           { path: '/reports', element: <ReportsPage /> },
 
-          // Restricted Admin & Manager routes
+          // Restricted Super Admin, Admin & Manager routes
           {
-            element: <RoleGuard allowedRoles={['Admin', 'Manager']} />,
+            element: <RoleGuard allowedRoles={['Super Admin', 'Admin', 'Manager']} />,
             children: [{ path: '/users', element: <UsersPage /> }],
           },
 
-          // Restricted Admin-only routes
+          // Restricted Super Admin & Admin routes
           {
-            element: <RoleGuard allowedRoles={['Admin']} />,
+            element: <RoleGuard allowedRoles={['Super Admin', 'Admin']} />,
             children: [
               { path: '/roles', element: <RolesView /> },
               { path: '/settings', element: <SettingsPage /> },
