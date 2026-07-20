@@ -1,0 +1,114 @@
+{
+  "project": {
+    "name": "Enterprise SaaS Dashboard",
+    "version": "1.0.0",
+    "description": "Production-ready Enterprise SaaS Dashboard built with React, TypeScript and scalable architecture.",
+    "author": "Rahul Jaggi",
+    "architecture": "Feature Based Modular Architecture",
+    "projectType": "Enterprise Frontend",
+    "deployment": "Vercel",
+    "repository": "GitHub"
+  },
+
+  "techStack": {
+    "frontend": {
+      "framework": "React 19",
+      "language": "TypeScript",
+      "bundler": "Vite",
+      "router": "React Router v7",
+      "stateManagement": "Redux Toolkit",
+      "api": "RTK Query",
+      "styling": "Tailwind CSS v4",
+      "uiLibrary": "shadcn/ui",
+      "form": "React Hook Form",
+      "validation": "Zod",
+      "charts": "Recharts",
+      "table": "TanStack Table",
+      "icons": "Lucide React",
+      "httpClient": "Axios"
+    },
+
+    "testing": {
+      "unit": "Vitest",
+      "component": "Testing Library",
+      "e2e": "Playwright"
+    },
+
+    "quality": {
+      "eslint": true,
+      "prettier": true,
+      "husky": true,
+      "lintStaged": true
+    },
+
+    "deployment": {
+      "docker": true,
+      "ci": "GitHub Actions",
+      "hosting": "Vercel"
+    }
+  },
+
+  "architecture": {
+    "type": "Feature Based",
+    "pattern": "Clean Architecture",
+    "principles": [
+      "Single Responsibility",
+      "Reusable Components",
+      "Separation Of Concerns",
+      "Scalable Folder Structure",
+      "Type Safety",
+      "Performance First"
+    ]
+  },
+
+  "features": [
+    "Authentication",
+    "Authorization",
+    "Dashboard",
+    "Analytics",
+    "Users",
+    "Roles",
+    "Permissions",
+    "Products",
+    "Orders",
+    "Customers",
+    "Notifications",
+    "Profile",
+    "Settings",
+    "Reports",
+    "Audit Logs",
+    "Dark Mode"
+  ],
+
+  "performance": {
+    "lazyLoading": true,
+    "codeSplitting": true,
+    "memoization": true,
+    "virtualization": true,
+    "debounce": true,
+    "throttle": true,
+    "imageOptimization": true,
+    "bundleOptimization": true
+  },
+
+  "security": {
+    "jwt": true,
+    "refreshToken": true,
+    "protectedRoutes": true,
+    "roleBasedAccess": true,
+    "permissionBasedAccess": true,
+    "xssProtection": true,
+    "csrfProtection": true
+  },
+
+  "codingStandards": {
+    "typescriptStrictMode": true,
+    "functionalComponents": true,
+    "customHooks": true,
+    "absoluteImports": true,
+    "featureModules": true,
+    "barrelExports": true,
+    "noAnyType": true,
+    "strongTyping": true
+  }
+}
