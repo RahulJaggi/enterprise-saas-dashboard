@@ -17,7 +17,7 @@ import { OrdersPage } from '../features/orders/pages/OrdersPage';
 import { CustomersView } from '../features/customers/CustomersView';
 import { NotificationsView } from '../features/notifications/NotificationsView';
 import { ProfileView } from '../features/profile/ProfileView';
-import { SettingsView } from '../features/settings/SettingsView';
+import { SettingsPage } from '../features/settings/pages/SettingsPage';
 import { ReportsView } from '../features/reports/ReportsView';
 import { AuditLogsView } from '../features/audit-logs/AuditLogsView';
 
@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
           { path: '/customers', element: <CustomersView /> },
           { path: '/notifications', element: <NotificationsView /> },
           { path: '/profile', element: <ProfileView /> },
-          { path: '/settings', element: <SettingsView /> },
+          { path: '/settings', element: <SettingsPage /> },
           { path: '/reports', element: <ReportsView /> },
           { path: '/audit-logs', element: <AuditLogsView /> },
         ],

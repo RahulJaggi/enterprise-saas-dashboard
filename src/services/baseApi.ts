@@ -30,7 +30,7 @@ let auditLogsData = [...initialAuditLogs];
 export const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: fakeBaseQuery(),
-  tagTypes: ['Users', 'Customers', 'Products', 'Orders', 'Metrics', 'AuditLogs'],
+  tagTypes: ['Users', 'Customers', 'Products', 'Orders', 'Metrics', 'AuditLogs', 'Settings'],
   endpoints: (builder) => ({
     // Metrics & Analytics
     getDashboardMetrics: builder.query<DashboardMetrics, void>({
