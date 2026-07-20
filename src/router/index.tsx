@@ -9,7 +9,8 @@ import { ForgotPassword } from '../features/auth/ForgotPassword';
 
 import { DashboardView } from '../features/dashboard/DashboardView';
 import { AnalyticsView } from '../features/analytics/AnalyticsView';
-import { UsersView } from '../features/users/UsersView';
+import { UsersPage } from '../features/users/pages/UsersPage';
+
 import { RolesView } from '../features/roles/RolesView';
 import { ProductsView } from '../features/products/ProductsView';
 import { OrdersView } from '../features/orders/OrdersView';
@@ -41,7 +42,7 @@ export const router = createBrowserRouter([
         children: [
           { path: '/dashboard', element: <DashboardView /> },
           { path: '/analytics', element: <AnalyticsView /> },
-          { path: '/users', element: <UsersView /> },
+          { path: '/users', element: <UsersPage /> },
           { path: '/roles', element: <RolesView /> },
           { path: '/products', element: <ProductsView /> },
           { path: '/orders', element: <OrdersView /> },
